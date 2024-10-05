@@ -1,5 +1,6 @@
 package com.example.repo
 
+import com.example.common.Constants
 import com.example.common.Constants.NEXT_PAGE_KEY
 import com.example.common.Constants.PREVIOUS_PAGE_KEY
 import com.example.models.ApiResponse
@@ -18,16 +19,11 @@ class MoviesRepositoryImpl : MoviesRepository {
     }
 
 
-    override val page1: List<Movie>
-        get() = TODO("Not yet implemented")
-    override val page2: List<Movie>
-        get() = TODO("Not yet implemented")
-    override val page3: List<Movie>
-        get() = TODO("Not yet implemented")
-    override val page4: List<Movie>
-        get() = TODO("Not yet implemented")
-    override val page5: List<Movie>
-        get() = TODO("Not yet implemented")
+    override val page1 = Constants.page1
+    override val page2 = Constants.page2
+    override val page3 = Constants.page3
+    override val page4 = Constants.page4
+    override val page5 = Constants.page5
 
     override suspend fun getAllMovies(page: Int) =
         ApiResponse(

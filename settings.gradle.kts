@@ -1,1 +1,1 @@
-rootProject.name = "topMoviesAppServer"
+rootProject.name = "com.example.topMoviesAppServer"

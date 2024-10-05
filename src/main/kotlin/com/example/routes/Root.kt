@@ -5,7 +5,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun Route.root() {
-    get("/a") {
+    get("/") {
         call.respond(
             status = HttpStatusCode.OK,
             message= "Welcome to TopMoviesApp"
