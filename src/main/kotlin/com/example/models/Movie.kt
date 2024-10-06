@@ -9,6 +9,9 @@ data class Movie(
     val image: String,
     val description: String,
     val rating: Double,
+    val imdbRating: Double,
     val imdbLink: String,
-    val cast: List<String>
+    val director: String,
+    val writers: List<String>,
+    val topCast: List<String>
 )
