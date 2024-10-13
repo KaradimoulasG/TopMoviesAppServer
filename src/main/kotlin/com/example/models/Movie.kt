@@ -13,5 +13,6 @@ data class Movie(
     val imdbLink: String,
     val director: String,
     val writers: List<String>,
-    val topCast: List<String>
+    val topCast: List<String>,
+    val mpaaRating: String
 )
