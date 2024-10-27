@@ -13,6 +13,6 @@ interface MoviesRepository {
     val page4: List<Movie>
     val page5: List<Movie>
 
-    suspend fun getAllMovies(page: Int = 1): ApiResponse
-    suspend fun searchMovies(name: String?): ApiResponse
+    suspend fun getAllMovies(page: Int = 1): ApiResponse<List<Movie>>
+    suspend fun searchMovies(name: String?): ApiResponse<List<Movie>>
 }

@@ -6,7 +6,7 @@ import com.example.common.Constants.PREVIOUS_PAGE_KEY
 import com.example.models.ApiResponse
 import com.example.models.Movie
 
-class MoviesRepositoryImpl : MoviesRepository {
+class MoviesController : MoviesRepository {
 
     override val movies: Map<Int, List<Movie>> by lazy {
         mapOf(
@@ -31,7 +31,7 @@ class MoviesRepositoryImpl : MoviesRepository {
             message = "ok",
             previousPage = calculatePage(page = page)[PREVIOUS_PAGE_KEY],
             nextPage = calculatePage(page = page)[NEXT_PAGE_KEY],
-            movies = movies[page] ?: listOf(),
+            data = movies[page] ?: listOf(),
             lastUpdated = System.currentTimeMillis()
         )
 
@@ -39,7 +39,7 @@ class MoviesRepositoryImpl : MoviesRepository {
         ApiResponse(
             success = true,
             message = "ok",
-            movies = findMovies(query = name)
+            data = findMovies(query = name),
         )
 
     private fun calculatePage(page: Int): Map<String, Int?> {

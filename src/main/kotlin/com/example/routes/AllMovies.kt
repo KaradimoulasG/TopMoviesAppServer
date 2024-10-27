@@ -6,10 +6,8 @@ import com.example.repo.MoviesRepository
 import io.ktor.http.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import org.koin.ktor.ext.inject
 
-fun Route.getAllMovies() {
-    val moviesRepository: MoviesRepository by inject()
+fun Route.getAllMovies(repo: MoviesRepository) {
 
 
     get("/moviesApp/allMovies") {
@@ -18,20 +16,28 @@ fun Route.getAllMovies() {
             println("New page : $page")
             require(page in 1..5)
 
-            val apiResponse = moviesRepository.getAllMovies(page = page)
+            val moviesList = repo.getAllMovies(page = page)
             call.respond(
                 status = HttpStatusCode.OK,
-                message = apiResponse
+                message = moviesList
             )
         } catch (e : NumberFormatException) {
             call.respond(
                 status = HttpStatusCode.BadRequest,
-                message = ApiResponse(success = false, message = Constants.NUMBERS_ONLY_EXCEPTION)
+                message = ApiResponse<Unit>(
+                    success = false,
+                    message = Constants.NUMBERS_ONLY_EXCEPTION,
+                    data = null
+                )
             )
         } catch (e : IllegalArgumentException) {
             call.respond(
                 status = HttpStatusCode.NotFound,
-                message = ApiResponse(success = false, message = Constants.MOVIES_NOT_FOUND_EXCEPTION)
+                message = ApiResponse<Unit>(
+                    success = false,
+                    message = Constants.MOVIES_NOT_FOUND_EXCEPTION,
+                    data = null
+                )
             )
         }
     }
