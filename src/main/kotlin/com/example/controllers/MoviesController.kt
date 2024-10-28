@@ -1,10 +1,11 @@
-package com.example.repo
+package com.example.controllers
 
 import com.example.common.Constants
 import com.example.common.Constants.NEXT_PAGE_KEY
 import com.example.common.Constants.PREVIOUS_PAGE_KEY
 import com.example.models.ApiResponse
 import com.example.models.Movie
+import com.example.repo.MoviesRepository
 
 class MoviesController : MoviesRepository {
 
